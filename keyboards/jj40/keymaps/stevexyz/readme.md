@@ -8,10 +8,14 @@ With this layout a 4x12 jj40 is transformed into a simil PyroL "alpha 28" with a
 
 Why you should want to do something like this?
 There are many valid reasons.
-The main one to me might just be to be able to test such an "extreme" configuration for real if you have this easily available board on hand. 
+The main one to me might just be to be able to test such an "extreme" configuration for real if you have this easily available board on hand.
 But also because this setup might be even more confortable than the original 2u space one (for muscle memory having bnm letters nearer to zxcv).
-Or just more nice looking. 
+Or just more nice looking.
 Surely you have an additional option! And personally I liked it!!
+
+Notes on layout:
+After few tests I found out that the space at the end is the best for people that still use this and “standard” keyboards (retaining years of muscle memory).
+Moreover, also fn and numsym layer keys are good to be replicated (on central line) and also keeping in the order will allow a single finger shift+fn (on the left) and also shift+num (on the right).
 
 [Keyboard layout editor](http://www.keyboard-layout-editor.com/#/) raw data:
 ```

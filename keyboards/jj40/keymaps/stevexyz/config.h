@@ -1,7 +1,7 @@
 
 // Behaviors That Can Be Configured
 
-#define TAPPING_TERM 200
+#define TAPPING_TERM 250
         // how long before a tap becomes a hold, if set above 500, a key tapped during the tapping term will turn it into a hold too
 
 #define PERMISSIVE_HOLD
@@ -43,4 +43,3 @@
     #define TAP_HOLD_CAPS_DELAY 80
         // Sets the delay for Tap Hold keys (LT, MT) when using KC_CAPSLOCK keycode, as this has some special handling on MacOS. The value is in milliseconds, and defaults to 80 ms if not defined. For macOS, you may want to set this to 200 or higher.
 */
-
