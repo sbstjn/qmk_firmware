@@ -54,13 +54,17 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* LEGEND:
- * ,----------------------------.
- * | Top row: shifted character |
- * | Central row: standard char |
- * | Bottom row: hold modifier  |
- * `----------------------------'
- * "____" means free to be assigned
+/*
+ * LEGEND:
+ *
+ * ,--------------------------------.
+ * |     Top row: shifted character |
+ * | Central row: standard char     |
+ * |  Bottom row: hold modifier     |
+ * `--------------------------------'
+ *
+ *  "____" means free to be assigned
+ *
  */
 
 
@@ -165,22 +169,73 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          XXXXXXX, XXXXXXX, KC_LCTL, KC_LALT,           KC_TRNS,          KC_TRNS, KC_PSCR, KC_SLCK, KC_PAUS, MT(MOD_RSFT, KC_SPC), XXXXXXX, XXXXXXX ),
 
 /* Numeric Keypad
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |NumLck| ____ |NumLay|  =   |  *   |  +   |  7   |  8   |  9   |Backsp|      |
+ * |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      | Tab  |  (   |  )   |  ,   |  /   |  -   |  4   |  5   |  6   | Enter|      |
+ * |      | Shift| ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | Shift|      |
+ * |------+------+------+------+------+------+------|------+------+------+------+------+
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      | ____ | ____ | ____ |  .   |  0   |  1   |  2   |  3   |      |      |
+ * |      |      | Ctrl |  Alt | ____ | ____ | ____ | ____ | ____ | Shift|      |      |
+ * `-----------------------------------------------------------------------------------'
  */
   [LAYER_NUMONLY] = LAYOUT_ortho_4x12(
          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX,     XXXXXXX,        XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,
-         XXXXXXX, KC_NLCK, KC_NO,   TG(LAYER_NUMONLY), KC_KP_EQUAL, KC_KP_ASTERISK, KC_KP_PLUS,  KC_P7,   KC_P8,   KC_P9,   KC_P0,       XXXXXXX,
-         XXXXXXX, KC_TAB,  KC_LPRN, KC_RPRN,           KC_KP_COMMA, KC_KP_SLASH,    KC_KP_MINUS, KC_P4,   KC_P5,   KC_P6,   KC_KP_ENTER, XXXXXXX,
-         XXXXXXX, XXXXXXX, KC_LCTL, KC_LALT,           KC_NO,       KC_NO,          KC_KP_DOT,   KC_P1,   KC_P2,   KC_P3,   XXXXXXX,     XXXXXXX ),
+         XXXXXXX, KC_NLCK, KC_NO,   TG(LAYER_NUMONLY), KC_KP_EQUAL, KC_KP_ASTERISK, KC_KP_PLUS,  KC_P7,   KC_P8,   KC_P9,   KC_BSPC,     XXXXXXX,
+         XXXXXXX, MT(MOD_LSFT, KC_TAB), KC_LPRN, KC_RPRN, KC_KP_COMMA, KC_KP_SLASH, KC_KP_MINUS, KC_P4,   KC_P5,   KC_P6,   MT(MOD_LSFT, KC_KP_ENTER), XXXXXXX,
+         XXXXXXX, XXXXXXX, KC_LCTL, KC_LALT,           KC_NO,       KC_KP_DOT,      KC_P0,       KC_P1,   KC_P2,   MT(MOD_LSFT, KC_P3),   XXXXXXX,     XXXXXXX ),
 
 /* Backlight adjustment Layer
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      | ____ | ____ | ____ |LghLay| ____ | Hue+ | Sat+ | Val+ | ____ | Plain|      |
+ * |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      | ____ | ____ |ModeFw|ModeBw| ____ | Hue- | Sat- | Val- | ____ |Toggle|      |
+ * |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |
+ * |------+------+------+------+------+------+------|------+------+------+------+------+
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |Breath|Rainbw| Swirl| Snake|Knight| XMas |Gradnt| Test |      |      |
+ * |      |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |      |
+ * `-----------------------------------------------------------------------------------'
  */
   [LAYER_LIGHTS] = LAYOUT_ortho_4x12(
          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-         XXXXXXX, KC_NO,   KC_NO,   KC_NO,   TG(LAYER_LIGHTS), KC_NO,   RGB_HUI, RGB_SAI,  RGB_VAI, KC_NO,   KC_NO,   XXXXXXX,
-         XXXXXXX, KC_NO,   KC_NO,   KC_NO,   KC_NO,            KC_NO,   RGB_HUD, RGB_SAD,  RGB_VAD, KC_NO,   RGB_TOG, XXXXXXX,
-         XXXXXXX, XXXXXXX, KC_LCTL, KC_LALT, KC_NO,            KC_NO,   RGB_MOD, RGB_RMOD, RGB_M_B, RGB_M_P, XXXXXXX, XXXXXXX ),
+         XXXXXXX, KC_NO,   KC_NO,   KC_NO,   TG(LAYER_LIGHTS), KC_NO,   RGB_HUI, RGB_SAI,  RGB_VAI, KC_NO,   RGB_M_P, XXXXXXX,
+         XXXXXXX, KC_NO,   KC_NO,   RGB_MOD, RGB_RMOD,         KC_NO,   RGB_HUD, RGB_SAD,  RGB_VAD, KC_NO,   RGB_TOG, XXXXXXX,
+         XXXXXXX, XXXXXXX, RGB_MODE_BREATHE, RGB_MODE_RAINBOW, RGB_MODE_SWIRL, RGB_MODE_SNAKE, RGB_MODE_KNIGHT, RGB_MODE_XMAS, RGB_MODE_GRADIENT, RGB_MODE_RGBTEST, XXXXXXX, XXXXXXX ),
 
 /* Mouse emulation Layer
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      | Btn1 |  Up  | Btn2 | Whl+ | Accl0| Accl1| Accl2| ____ |MouLay| ____ |      |
+ * |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      | Left | Down | Right| Whl- | ____ | ____ | ____ | ____ | ____ | Enter|      |
+ * |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |
+ * |------+------+------+------+------+------+------|------+------+------+------+------+
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |      |
+ * |      |      | Ctrl |  Alt | ____ | ____ |  OS  |  Alt | Ctrl | Shift|      |      |
+ * `-----------------------------------------------------------------------------------'
  */
   [LAYER_MOUSE] = LAYOUT_ortho_4x12(
          XXXXXXX, XXXXXXX,    XXXXXXX,    XXXXXXX,     XXXXXXX,       XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,  XXXXXXX,              XXXXXXX, XXXXXXX,
@@ -189,6 +244,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          XXXXXXX, XXXXXXX,    KC_LCTL,    KC_LALT,     KC_NO,         KC_NO,        KC_RGUI,      KC_RALT,      KC_RCTL,  MT(MOD_RSFT, KC_SPC), XXXXXXX, XXXXXXX ),
 
 };
+
 
 void matrix_init_user(void) {
   // set num lock on at start independently of state (for numonly layer to work)
@@ -200,3 +256,23 @@ void matrix_init_user(void) {
 
 void matrix_scan_user(void) {
 }
+
+/* Empty keyboard
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |
+ * |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |
+ * |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |
+ * |------+------+------+------+------+------+------|------+------+------+------+------+
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |      |
+ * |      |      | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
