@@ -2,9 +2,9 @@
 
 With this configuration a 4x12 jj40 (with 48 keys) is transformed into an ortholinear PyroL-vderm 28 keys inspired layout one. This keyboard can be actually called jj28!
 
-![Bare layout](https://ibb.co/BgBCFz8)
+![Bare layout](https://i.ibb.co/7GK1LY7/layout-0.jpg)
 
-![Fully described](https://ibb.co/37bqbcr)
+![Fully described](https://i.ibb.co/kxTfTXH/layout-4.jpg)
 
 Why you should want to do something like this?
 There are many valid reasons.
